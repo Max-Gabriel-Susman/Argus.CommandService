@@ -9,8 +9,8 @@ builder.Services.AddEndpointsApiExplorer();
 builder.Services.AddSwaggerGen();
 builder.Services.AddControllers();
 builder.Services.AddOpenApiDocument();
-builder.Services.AddDbContext<TodoContext>(opt => 
-    opt.UseInMemoryDatabase("TodoList"));
+builder.Services.AddDbContext<InventoryContext>(opt => 
+    opt.UseInMemoryDatabase("InventoryList"));
 
 var app = builder.Build();
 
