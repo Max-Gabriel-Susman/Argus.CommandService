@@ -1,6 +1,0 @@
-@Argus.InventoryService_HostAddress = http://localhost:5213
-
-GET {{Argus.InventoryService_HostAddress}}/weatherforecast/
-Accept: application/json
-
-###

@@ -22,6 +22,7 @@ namespace Argus.InventoryService.Controllers
 
         // GET: api/InventoryItems
         [HttpGet]
+        
         public async Task<ActionResult<IEnumerable<InventoryItem>>> GetInventoryItems()
         {
             return await _context.InventoryItems.ToListAsync();
