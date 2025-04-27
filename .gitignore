@@ -1,0 +1,30 @@
+# Visual Studio and VS Code user-specific files
+.vscode/
+*.user
+*.suo
+*.userosscache
+*.sln.docstates
+
+# Build outputs
+bin/
+obj/
+
+# .NET Core diagnostics and crash dumps
+*.crashdump
+*.dump
+*.dmp
+*.pdb
+
+# Miscellaneous files
+*.DS_Store
+*.swp
+*~
+
+# NuGet Packages
+*.nupkg
+packages/
+
+# Sensitive config files
+appsettings*.json
+!appsettings.json
+!appsettings.*.json
