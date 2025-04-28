@@ -9,8 +9,13 @@ builder.Services.AddEndpointsApiExplorer();
 builder.Services.AddSwaggerGen();
 builder.Services.AddControllers();
 builder.Services.AddOpenApiDocument();
-builder.Services.AddDbContext<InventoryContext>(opt => 
-    opt.UseInMemoryDatabase("InventoryList"));
+// builder.Services.AddDbContext<InventoryContext>(opt => 
+//     opt.UseInMemoryDatabase("InventoryList"));
+var connectionString = builder.Configuration.GetConnectionString("DefaultConnection") 
+    ?? throw new InvalidOperationException("Connection string not found.");
+
+builder.Services.AddDbContext<InventoryContext>(opt =>
+    opt.UseSqlServer(connectionString));
 
 var app = builder.Build();
 
