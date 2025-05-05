@@ -25,4 +25,6 @@
     <PackageReference Include="Swashbuckle.AspNetCore" Version="6.6.2" />
   </ItemGroup>
 
+  <ItemGroup> <Compile Remove="Argus.InventoryService.Tests/**/*.cs" /> <None Include="Argus.InventoryService.Tests/**" /> </ItemGroup>
+
 </Project>
