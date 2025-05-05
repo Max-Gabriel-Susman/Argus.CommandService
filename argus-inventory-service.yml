@@ -1,0 +1,36 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: argus-inventory-service
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: argus-inventory-service
+  template:
+    metadata:
+      labels:
+        app: argus-inventory-service
+    spec:
+      containers:
+        - name: argus-inventory-service
+          image: <aws_account_id>.dkr.ecr.<region>.amazonaws.com/argus-inventory-service:latest
+          ports:
+            - containerPort: 8080
+          env:
+            - name: ASPNETCORE_ENVIRONMENT
+              value: Development
+            - name: ConnectionStrings__DefaultConnection
+              value: "Server=argus-inventory-service-db,1433;Database=InventoryDb;User Id=sa;Password=YourStrong!Passw0rd;TrustServerCertificate=True"
+---
+apiVersion: v1
+kind: Service
+metadata:
+  name: argus-inventory-service
+spec:
+  type: LoadBalancer
+  ports:
+    - port: 80
+      targetPort: 8080
+  selector:
+    app: argus-inventory-service

@@ -1,0 +1,35 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: argus-inventory-service-db
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: argus-inventory-service-db
+  template:
+    metadata:
+      labels:
+        app: argus-inventory-service-db
+    spec:
+      containers:
+        - name: sqlserver
+          image: mcr.microsoft.com/mssql/server:2022-latest
+          ports:
+            - containerPort: 1433
+          env:
+            - name: ACCEPT_EULA
+              value: "Y"
+            - name: MSSQL_SA_PASSWORD
+              value: "YourStrong!Passw0rd"
+---
+apiVersion: v1
+kind: Service
+metadata:
+  name: argus-inventory-service-db
+spec:
+  ports:
+    - port: 1433
+      targetPort: 1433
+  selector:
+    app: argus-inventory-service-db
