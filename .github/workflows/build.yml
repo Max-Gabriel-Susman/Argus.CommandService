@@ -3,26 +3,61 @@ name: build & test
 on: [push, pull_request]
 
 jobs:
-  test:
+  build:
     runs-on: ubuntu-latest
+
     steps:
       - uses: actions/checkout@v4
+
+      # .NET 8 SDK
       - uses: actions/setup-dotnet@v4
         with:
           dotnet-version: '8.0.x'
 
+      # Restore + compile everything once
       - name: Restore & build
         run: dotnet build --configuration Release
 
-      - name: Run tests with coverage
-        run: dotnet test --configuration Release --collect:"XPlat Code Coverage" --results-directory ./TestResults
+  test:
+    # Re-use the workspace produced by the build job
+    needs: build
+    runs-on: ubuntu-latest
 
+    steps:
+      - uses: actions/checkout@v4       # Needed for a fresh workspace
+      - uses: actions/setup-dotnet@v4
+        with:
+          dotnet-version: '8.0.x'
+
+      # Run the xUnit test project directly
+      - name: Run unit tests with coverage
+        run: |
+          dotnet test \
+            Argus.InventoryService.Tests/Argus.InventoryService.Tests.csproj \
+            --configuration Release \
+            --no-build \                      # Skip recompiling—already built
+            --logger "trx;LogFileName=test_results.trx" \
+            --collect "XPlat Code Coverage" \
+            --results-directory ./TestResults
+
+      # Upload the raw test results so GitHub can show them in the UI
+      - name: Upload test results (TRX)
+        uses: actions/upload-artifact@v4
+        with:
+          name: test-results
+          path: TestResults/test_results.trx
+
+      # Convert Cobertura → HTML
       - name: Generate HTML coverage report
         run: |
           dotnet tool install -g dotnet-reportgenerator-globaltool
-          reportgenerator -reports:TestResults/**/coverage.cobertura.xml -targetdir:coverage
+          reportgenerator \
+            -reports:TestResults/**/coverage.cobertura.xml \
+            -targetdir:coverage \
+            -reporttypes:Html
+
       - name: Upload coverage artefact
         uses: actions/upload-artifact@v4
         with:
           name: coverage-report
-          path: coverage/*
+          path: coverage/**
