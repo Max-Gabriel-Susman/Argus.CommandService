@@ -34,10 +34,10 @@ jobs:
         run: >
           dotnet test Argus.InventoryService.Tests/Argus.InventoryService.Tests.csproj
           --configuration Release
-          --no-build
           --logger "trx;LogFileName=test_results.trx"
           --collect "XPlat Code Coverage"
           --results-directory ./TestResults
+
 
 
       # Upload the raw test results so GitHub can show them in the UI
