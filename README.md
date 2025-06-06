@@ -1,6 +1,6 @@
 # Argus Command Service
 
-Argus Comman Service is the backend for the Argus fleet management system. It's dockerized and can be spun up locally using the included `docker-compose.yaml` file and following the instructions under the `Local Setup` section of this README. Additionally the instructions for deploying this to EKS are included in the `EKS Deployment` section of this README and it would be a fairly low level of effort to deploy to another cloud platform like Linode or Azure.
+Argus Command Service is the backend for the Argus fleet management system. It's dockerized and can be spun up locally using the included `docker-compose.yaml` file and following the instructions under the `Local Setup` section of this README. Additionally the instructions for deploying this to EKS are included in the `EKS Deployment` section of this README and it would be a fairly low level of effort to deploy to another cloud platform like Linode or Azure.
 
 Argus Command Service is not currently productionalized, there are a handful of requirements that are unmet including: 
 
