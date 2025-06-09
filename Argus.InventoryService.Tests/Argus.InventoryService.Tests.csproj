@@ -24,7 +24,7 @@
   </ItemGroup>
 
   <ItemGroup>
-    <ProjectReference Include="..\Argus.InventoryService.csproj" />
+    <ProjectReference Include="..\Argus.CommandService.csproj" />
   </ItemGroup>
 
 </Project>
