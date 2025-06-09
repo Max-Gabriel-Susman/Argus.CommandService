@@ -5,9 +5,9 @@ using System.Threading.Tasks;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
-using Argus.InventoryService.Models;
+using Argus.CommandService.Models;
 
-namespace Argus.InventoryService.Controllers
+namespace Argus.CommandService.Controllers
 {
     [Route("api/[controller]")]
     [ApiController]

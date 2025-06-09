@@ -1,4 +1,4 @@
-namespace Argus.InventoryService.Tests;
+namespace Argus.CommandService.Tests;
 
 public class UnitTest1
 {

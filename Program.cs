@@ -1,5 +1,5 @@
 using Microsoft.EntityFrameworkCore; 
-using Argus.InventoryService.Models;
+using Argus.CommandService.Models;
 
 var builder = WebApplication.CreateBuilder(args);
 

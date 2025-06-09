@@ -2,7 +2,7 @@
 
 #nullable disable
 
-namespace Argus.InventoryService.Migrations
+namespace Argus.CommandService.Migrations
 {
     /// <inheritdoc />
     public partial class InitialCreate : Migration

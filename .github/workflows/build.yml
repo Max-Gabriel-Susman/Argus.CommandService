@@ -32,7 +32,7 @@ jobs:
       # Run the xUnit test project directly
       - name: Run unit tests with coverage
         run: >
-          dotnet test Argus.InventoryService.Tests/Argus.InventoryService.Tests.csproj
+          dotnet test Argus.CommandService.Tests/Argus.CommandService.Tests.csproj
           --configuration Release
           --logger "trx;LogFileName=test_results.trx"
           --collect "XPlat Code Coverage"

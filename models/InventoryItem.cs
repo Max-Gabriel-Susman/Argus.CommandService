@@ -1,4 +1,4 @@
-namespace Argus.InventoryService.Models;
+namespace Argus.CommandService.Models;
 
 public class InventoryItem {
     public long Id { get; set; }

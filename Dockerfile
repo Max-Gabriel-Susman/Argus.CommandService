@@ -18,4 +18,4 @@ COPY --from=build-env /app/out .
 # Expose port and run the app directly
 ENV ASPNETCORE_URLS=http://+:8080
 EXPOSE 8080
-ENTRYPOINT ["dotnet", "Argus.InventoryService.dll"]
+ENTRYPOINT ["dotnet", "Argus.CommandService.dll"]
